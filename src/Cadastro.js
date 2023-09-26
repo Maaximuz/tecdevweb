@@ -78,7 +78,7 @@ function Cadastro() {
   
       // Criar o usuário com e-mail e senha usando 'auth'
       const userCredentials = await cadastrarUsuario(email, senha, nome, sobrenome, dataNascimentoFormatted);
-
+      console.log(userCredentials);
       if (userCredentials) {
         // Exibir uma notificação de sucesso
         toast.success('Cadastro realizado com sucesso! Você será redirecionado para a página de login.');

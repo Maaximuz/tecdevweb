@@ -19,7 +19,7 @@ const db = firebase.firestore(app);
 // Função para criar um novo usuário com e-mail e senha
 const cadastrarUsuario = async (email, senha, nome, sobrenome, dataNascimentoFormatted) => {
   try {
-    const userCredential = await auth.createUserWithEmailAndPassword(email, senha).then(data => {
+    await auth.createUserWithEmailAndPassword(email, senha).then(async(data) => {
       const uid = data.user.uid;
 
       const users = firebase.firestore().collection('users');
@@ -27,7 +27,7 @@ const cadastrarUsuario = async (email, senha, nome, sobrenome, dataNascimentoFor
         dataNascimento: dataNascimentoFormatted, nome: nome, sobrenome: sobrenome, uid: uid
       })
     });
-    return userCredential.user;
+    return true;
   } catch (error) {
     throw error;
   }
